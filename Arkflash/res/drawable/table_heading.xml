@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item>
+        <shape>
+            <solid android:color="@android:color/black" />
+
+            <padding android:bottom="2dp" />
+        </shape>
+    </item>
+
+    <item>
+        <shape>
+            <gradient
+                android:endColor="@color/holo_blue_dark"
+                android:startColor="@color/holo_blue_light"
+                android:angle="270" />
+
+            <padding android:bottom="3dp" />
+        </shape>
+    </item>
+
+</layer-list>

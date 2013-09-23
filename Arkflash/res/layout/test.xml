@@ -1,0 +1,97 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context=".MainActivity" >
+
+        <EditText
+            android:id="@+id/lineVotageV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="line voltage (V)"
+            android:inputType="numberDecimal" >
+
+            <requestFocus />
+        </EditText>
+
+        <RadioGroup
+            android:id="@+id/optionGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <RadioButton
+                android:id="@+id/openArea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Open Air" />
+
+            <RadioButton
+                android:id="@+id/switchGears"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Switch Gears" />
+
+            <RadioButton
+                android:id="@+id/mcPanels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MCs/Panels" />
+
+            <RadioButton
+                android:id="@+id/cables"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cables" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/transformerKVA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Transformer kVa"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/transformerZ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Transfomrer Z in %"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/faultClearanceTimeT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Fault clearance time (t)"
+            android:inputType="numberDecimal" />
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit" />
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="5"
+            android:text="Result.." />
+    </LinearLayout>
+
+</ScrollView>

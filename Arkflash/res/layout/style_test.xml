@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:dividerPadding="2dp"
+    android:orientation="vertical"
+    android:showDividers="beginning|middle|end" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="60"
+        android:background="@drawable/table_card"
+        android:orientation="vertical"
+        android:padding="1dp" >
+
+        <TextView
+            android:id="@+id/inputHeading"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/table_heading"
+            android:gravity="center_horizontal"
+            android:text="Input"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/field_label"
+            android:textStyle="bold" />
+
+        <ScrollView
+            android:id="@+id/scrollView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/tableRow2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/row_light"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:textSize="@dimen/field_label"
+                    android:textStyle="bold" >
+
+                    <TextView
+                        android:id="@+id/lineVotageVLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="3dp"
+                        android:text="Line-line Voltage (kV)*"
+                        android:textSize="@dimen/field_label"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <EditText
+                            android:id="@+id/lineVotageV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="85"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:hint="Ex: 0.48"
+                            android:inputType="numberDecimal" >
+
+                            <requestFocus />
+                        </EditText>
+
+                        <TextView
+                            android:id="@+id/lineVotageVUnits"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="15"
+                            android:text="kV"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tableRow2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/row_dark"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:textSize="@dimen/field_label"
+                    android:textStyle="bold" >
+
+                    <TextView
+                        android:id="@+id/transformerKVALabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="3dp"
+                        android:text="Transformer (kVa)*"
+                        android:textSize="@dimen/field_label"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <EditText
+                            android:id="@+id/transformerkVA"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="85"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:hint="Ex: 750"
+                            android:inputType="numberDecimal" >
+
+                            <requestFocus />
+                        </EditText>
+
+                        <TextView
+                            android:id="@+id/transformerKVAUnits"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="15"
+                            android:text="kVA"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/optionGroupLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/row_light"
+                    android:orientation="vertical"
+                    android:padding="5dp" >
+
+                    <TextView
+                        android:id="@+id/optionGroupLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="3dp"
+                        android:text="Equipment Type"
+                        android:textSize="@dimen/field_label"
+                        android:textStyle="bold" />
+
+                    <RadioGroup
+                        android:id="@+id/optionGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <RadioButton
+                            android:id="@+id/openArea"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="@string/open_air" />
+
+                        <RadioButton
+                            android:id="@+id/switchGears"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="@string/switch_gears" />
+
+                        <RadioButton
+                            android:id="@+id/mcPanels"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/mcs_panels" />
+
+                        <RadioButton
+                            android:id="@+id/cables"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cables" />
+                    </RadioGroup>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tableRow2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/row_dark"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:textSize="@dimen/field_label"
+                    android:textStyle="bold" >
+
+                    <TextView
+                        android:id="@+id/transformerZLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="3dp"
+                        android:text="Transformer (Z)"
+                        android:textSize="@dimen/field_label"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <EditText
+                            android:id="@+id/transformerZ"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="85"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:hint="Ex: 5.52"
+                            android:inputType="numberDecimal" >
+
+                            <requestFocus />
+                        </EditText>
+
+                        <TextView
+                            android:id="@+id/transformerZUnits"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="15"
+                            android:text="%"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tableRow2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/row_light"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:textSize="@dimen/field_label"
+                    android:textStyle="bold" >
+
+                    <TextView
+                        android:id="@+id/faultClearanceTimeTLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="3dp"
+                        android:text="Fault Tolerance Time (t)"
+                        android:textSize="@dimen/field_label"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <EditText
+                            android:id="@+id/faultClearanceTimeT"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="85"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:hint="Ex: 0.167"
+                            android:inputType="numberDecimal" >
+
+                            <requestFocus />
+                        </EditText>
+
+                        <TextView
+                            android:id="@+id/faultClearanceTimeTUnits"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="15"
+                            android:text="s"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/groundedGroupLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/row_dark"
+                    android:orientation="vertical"
+                    android:padding="5dp" >
+
+                    <TextView
+                        android:id="@+id/groundedGroupLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="3dp"
+                        android:text="Grounding"
+                        android:textSize="@dimen/field_label"
+                        android:textStyle="bold" />
+
+                    <RadioGroup
+                        android:id="@+id/groundedGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/row_dark"
+                        android:orientation="horizontal" >
+
+                        <RadioButton
+                            android:id="@+id/grounded"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="50"
+                            android:checked="true"
+                            android:text="@string/grounded" />
+
+                        <RadioButton
+                            android:id="@+id/nonGrounded"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="50"
+                            android:text="@string/not_grounded" />
+                    </RadioGroup>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/table_heading"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Submit"
+        android:textColor="@color/white" />
+
+    <LinearLayout
+        android:id="@+id/resultView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/table_card"
+        android:orientation="vertical"
+        android:padding="1dp"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/table_heading"
+            android:gravity="center"
+            android:text="Result"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/field_label"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/resultTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:layout_gravity="center"
+            android:background="@drawable/table_heading" />
+    </LinearLayout>
+
+</LinearLayout>
