@@ -10,6 +10,8 @@
     <string name="cables">Cables</string>
     <string name="grounded">Grounded</string>
     <string name="not_grounded">Not Grounded</string>
+    
+    <string name="TAG_TITLE_STRING">Not Grounded</string>
 
     <color name="light_gray">#F6F6F6</color>
     <color name="dark_grey">#e6e6e6</color>
