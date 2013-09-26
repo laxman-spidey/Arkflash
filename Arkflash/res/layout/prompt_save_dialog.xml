@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="240dp"
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical" >
@@ -10,22 +10,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/table_heading"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
         android:gravity="center_horizontal"
-        android:text="Enter Title" />
+        android:text="Enter Title"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Give a title to your result." />
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:text="Give a title to your result."
+        android:textColor="@android:color/black" />
 
     <EditText
         android:id="@+id/titleEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:layout_margin="5dp"
+        android:ems="15"
         android:hint="enter title"
         android:inputType="text" >
 
@@ -35,6 +41,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:orientation="horizontal" >
 
         <Button
