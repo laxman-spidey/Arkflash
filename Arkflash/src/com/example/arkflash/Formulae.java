@@ -48,7 +48,7 @@ public class Formulae
 
 	public String getTestValues()
 	{
-		String res = "\n\n"+"K = " + K + ", k1 = " + k1 + ", k2 = " + k2 + ", cf = " + cf + ", G = " + G + ", X = " + X;
+		String res = "\n\n" + "K = " + K + ", k1 = " + k1 + ", k2 = " + k2 + ", cf = " + cf + ", G = " + G + ", X = " + X;
 		res += "\nlbf : " + lbf();
 		res += "\nLogLa : " + logLa(lbf());
 		res += "\narc currrent : " + arcCurrent();
@@ -113,7 +113,7 @@ public class Formulae
 			else if (option == 4)
 				return 2;
 		}
-		else if (V > 1 && V <= 5)
+		else if (V > 1 && V <= 15)
 		{
 			if (option == 1)
 				return 2;
@@ -122,15 +122,7 @@ public class Formulae
 			else if (option == 4)
 				return 2;
 		}
-		else if (V > 5 && V < 15)
-		{
-			if (option == 1)
-				return 2;
-			else if (option == 2)
-				return 0.973;
-			else if (option == 4)
-				return 2;
-		}
+
 		return 0;
 	}
 
@@ -160,7 +152,7 @@ public class Formulae
 
 	public double lbf()
 	{
-		return  (kVa * 100 / (z * 1.732 * V * 1000));
+		return (kVa * 100 / (z * 1.732 * V * 1000));
 	}
 
 	public double logLa(double lbf)
@@ -199,11 +191,10 @@ public class Formulae
 
 	}
 
-	
 	public void BMI()
 	{
-		double weight=1;
-		double height=1;
-		double BMI = weight/(height*height);//Body-Mass Index
+		double weight = 1;
+		double height = 1;
+		double BMI = weight / (height * height);// Body-Mass Index
 	}
 }

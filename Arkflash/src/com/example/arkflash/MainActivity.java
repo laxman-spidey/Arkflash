@@ -3,6 +3,7 @@ package com.example.arkflash;
 import com.actionbarsherlock.app.SherlockActivity;
 
 import android.os.Bundle;
+import android.content.Intent;
 import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,6 +15,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import android.widget.TextView;
 
@@ -23,6 +26,7 @@ import com.example.arkslash.R;
 public class MainActivity extends SherlockActivity implements OnClickListener
 {
 
+	public static final int SAVE_DIALOG_REQUEST = 10;
 	public static String LOG_TAG = "tag";
 	// dummy inputs
 	double V = 0.48; // Line Voltage
@@ -49,16 +53,20 @@ public class MainActivity extends SherlockActivity implements OnClickListener
 	private EditText faultClearanceTimeT_view;
 	private RadioGroup groundedGroup;
 	private Button submitButton;
-	TextView resultTextView;
-	LinearLayout resultView;
+	private Button saveButton;
+	private Button closeButton;
+	TextView incidentEnergyView;
+	TextView ea18View;
+	TextView ea12View;
+	RelativeLayout resultView;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.style_test);
-		resultTextView = (TextView) findViewById(R.id.resultTextView);
-		resultView = (LinearLayout) findViewById(R.id.resultView);
+		
 		instantiate();
 
 	}
@@ -75,24 +83,29 @@ public class MainActivity extends SherlockActivity implements OnClickListener
 	{
 
 		lineVoltageV_view = (EditText) findViewById(R.id.lineVotageV);
-		
 		optionGroup = (RadioGroup) findViewById(R.id.optionGroup);
 		transformerKVA_view = (EditText) findViewById(R.id.transformerkVA);
-		
 		transformerZ_view = (EditText) findViewById(R.id.transformerZ);
 		faultClearanceTimeT_view = (EditText) findViewById(R.id.faultClearanceTimeT);
 		groundedGroup = (RadioGroup) findViewById(R.id.groundedGroup);
 		submitButton = (Button) findViewById(R.id.submitButton);
-
+		saveButton = (Button) findViewById(R.id.saveButton);
+		closeButton = (Button) findViewById(R.id.closeButton);
+		
+		incidentEnergyView = (TextView) findViewById(R.id.incidentEnergyView);
+		ea18View = (TextView) findViewById(R.id.ea18View);
+		ea12View= (TextView) findViewById(R.id.ea12View);
+		resultView = (RelativeLayout) findViewById(R.id.resultView);
+		
 		submitButton.setOnClickListener(this);
-
-		///test
+		saveButton.setOnClickListener(this);
+		closeButton.setOnClickListener(this);
+		// /test
 		lineVoltageV_view.setText("6");
 		transformerKVA_view.setText("650");
-		
-		///test
-		
-		
+
+		// /test
+
 		lineVoltageV_view.addTextChangedListener(new TextWatcher() {
 
 			@Override
@@ -147,20 +160,53 @@ public class MainActivity extends SherlockActivity implements OnClickListener
 	}
 
 	@Override
-	public void onClick(View arg0)
+	public void onClick(View view)
 	{
 		Log.i(LOG_TAG, "onClick()");
-		if (validate() == true)
+		if (view.getId() == R.id.submitButton)
 		{
-			option = getOptionValue();
-			grounded = getGroudedValue();
-			Log.i(LOG_TAG, "v = " + V + ", option = " + option + ", t = " + faultClearanceTime + ", kVa = " + kVa + ", z = " + z + ", grounded = " + grounded);
-			Formulae formula = new Formulae(V, option, faultClearanceTime, kVa, z, grounded);
-			resultTextView.setText(" incident Energy = " + formula.incidentEnergy() + "\n ea18 = " + formula.eaAt18() + "\n ea12 = " + formula.eaAt12() + formula.getTestValues());
-
-			resultView.setVisibility(View.VISIBLE);
+			if (validate() == true)
+			{
+				option = getOptionValue();
+				grounded = getGroudedValue();
+				Log.i(LOG_TAG, "v = " + V + ", option = " + option + ", t = " + faultClearanceTime + ", kVa = " + kVa + ", z = " + z + ", grounded = " + grounded);
+				Formulae formula = new Formulae(V, option, faultClearanceTime, kVa, z, grounded);
+				incidentEnergyView.setText(" incident Energy = " + formula.incidentEnergy() );
+				ea18View.setText(" ea18 = " +formula.eaAt18());
+				ea12View.setText(" ea12 = " +formula.eaAt12());
+				resultView.setVisibility(View.VISIBLE);
+			}
+		}
+		else if(view.getId() == R.id.saveButton)
+		{
+			showSaveDialog();
+		}
+		else if(view.getId() == R.id.closeButton)
+		{
+			resultView.setVisibility(View.GONE);
 		}
 
+	}
+	
+	private void showSaveDialog()
+	{
+		Intent intent = new Intent(this, saveDialogActivity.class);
+		startActivityForResult(intent, SAVE_DIALOG_REQUEST);
+	}
+	
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+		if(requestCode == SAVE_DIALOG_REQUEST)
+		{
+			if(resultCode == RESULT_OK)
+			{
+				String title = data.getStringExtra(getResources().getString(R.string.TAG_TITLE_STRING));
+				Toast.makeText(getApplicationContext(), title, Toast.LENGTH_SHORT).show();
+			}
+		}
+		super.onActivityResult(requestCode, resultCode, data);
 	}
 
 	public boolean validate()
@@ -190,6 +236,7 @@ public class MainActivity extends SherlockActivity implements OnClickListener
 		// ///////////////////
 		if (isEmpty(transformerKVA_view))
 		{
+			validity = false;
 			setError(transformerKVA_view, "Field cannot be Empty.");
 		}
 		else
@@ -237,9 +284,7 @@ public class MainActivity extends SherlockActivity implements OnClickListener
 
 	public void setError(EditText field, String errorMsg)
 	{
-		field.setText("");
-		field.setHint(errorMsg);
-		field.setHintTextColor(Color.RED);
+		field.setError(errorMsg);
 
 	}
 
