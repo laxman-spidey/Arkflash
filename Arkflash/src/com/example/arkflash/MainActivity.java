@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -54,7 +55,7 @@ public class MainActivity extends SherlockActivity implements OnClickListener
 	private RadioGroup groundedGroup;
 	private Button submitButton;
 	private Button saveButton;
-	private Button closeButton;
+	private ImageButton closeButton;
 	TextView incidentEnergyView;
 	TextView ea18View;
 	TextView ea12View;
@@ -90,7 +91,7 @@ public class MainActivity extends SherlockActivity implements OnClickListener
 		groundedGroup = (RadioGroup) findViewById(R.id.groundedGroup);
 		submitButton = (Button) findViewById(R.id.submitButton);
 		saveButton = (Button) findViewById(R.id.saveButton);
-		closeButton = (Button) findViewById(R.id.closeButton);
+		closeButton = (ImageButton) findViewById(R.id.closeButton);
 		
 		incidentEnergyView = (TextView) findViewById(R.id.incidentEnergyView);
 		ea18View = (TextView) findViewById(R.id.ea18View);

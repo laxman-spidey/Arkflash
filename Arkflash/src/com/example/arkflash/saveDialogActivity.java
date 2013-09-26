@@ -21,7 +21,7 @@ public class saveDialogActivity extends Activity implements OnClickListener
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		// requestWindowFeature(Window.FEATURE_NO_TITLE);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 
 		setContentView(R.layout.prompt_save_dialog);
 
@@ -60,8 +60,7 @@ public class saveDialogActivity extends Activity implements OnClickListener
 	{
 		if (title.getText().toString().equals(""))
 		{
-			title.setHint("Please enter title");
-			title.setHintTextColor(Color.RED);
+			title.setError("Please enter title");
 			return false;
 		}
 		return true;
