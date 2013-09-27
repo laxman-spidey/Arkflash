@@ -117,8 +117,8 @@ public class MainActivity extends SherlockActivity implements OnClickListener
 		saveButton.setOnClickListener(this);
 		closeButton.setOnClickListener(this);
 		// /test
-		lineVoltageV_view.setText("6");
-		transformerKVA_view.setText("650");
+		lineVoltageV_view.setText("7");
+		transformerKVA_view.setText("700");
 
 		// /test
 
