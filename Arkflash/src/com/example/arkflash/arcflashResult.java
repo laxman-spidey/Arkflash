@@ -95,7 +95,7 @@ public class arcflashResult
 		return equipmentType;
 	}
 
-	public String getEquipmenTypeString()
+	public String getEquipmentTypeString()
 	{
 		switch (equipmentType)
 		{
