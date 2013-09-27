@@ -1,5 +1,9 @@
 package com.example.arkflash;
 
+import com.example.arkslash.R;
+
+import android.content.res.Resources;
+
 public class arcflashResult
 {
 
@@ -21,10 +25,10 @@ public class arcflashResult
 	private int equipmentType;
 	private double transformerZ;
 	private double faultToleranceTime;
-	public int grounding;
-	public double incidentEnergy;
-	public double ea18;
-	public double ea12;
+	private int grounding;
+	private double incidentEnergy;
+	private double ea18;
+	private double ea12;
 
 	public String getTitle()
 	{
@@ -91,6 +95,28 @@ public class arcflashResult
 		return equipmentType;
 	}
 
+	public String getEquipmenTypeString()
+	{
+		switch (equipmentType)
+		{
+		case 1:
+			return Resources.getSystem().getString(R.string.open_air);
+
+		case 2:
+			return Resources.getSystem().getString(R.string.switch_gears);
+
+		case 3:
+			return Resources.getSystem().getString(R.string.mcs_panels);
+
+		case 4:
+			return Resources.getSystem().getString(R.string.cables);
+
+		default:
+			return null;
+
+		}
+	}
+
 	public void setEquipmentType(int equipmentType)
 	{
 		this.equipmentType = equipmentType;
@@ -119,6 +145,20 @@ public class arcflashResult
 	public int getGrounding()
 	{
 		return grounding;
+	}
+
+	public String getGroundingString()
+	{
+		switch (grounding)
+		{
+		case 0:
+			return Resources.getSystem().getString(R.string.grounded);
+		case 1:
+			return Resources.getSystem().getString(R.string.not_grounded);
+
+		default:
+			return null;
+		}
 	}
 
 	public void setGrounding(int grounding)
