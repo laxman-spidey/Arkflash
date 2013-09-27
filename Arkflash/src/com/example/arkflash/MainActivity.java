@@ -2,6 +2,7 @@ package com.example.arkflash;
 
 import com.actionbarsherlock.app.SherlockActivity;
 
+import android.R.menu;
 import android.os.Bundle;
 import android.content.Intent;
 import android.graphics.Color;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 import android.widget.TextView;
 
 import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 import com.example.arkslash.R;
 
 public class MainActivity extends SherlockActivity implements OnClickListener
@@ -35,7 +37,7 @@ public class MainActivity extends SherlockActivity implements OnClickListener
 	double kVa = 750;
 	double z = 5.52;
 	boolean grounded = true;
-	double option = 1;
+	int option = 1;
 
 	// conditions
 
@@ -46,6 +48,10 @@ public class MainActivity extends SherlockActivity implements OnClickListener
 	double X = 1.473;
 	double G = 32; // Conductor Gap
 
+	// results
+	double incidentEnergy;
+	double ea18;
+	double ea12;
 	// views
 	private EditText lineVoltageV_view;
 	private RadioGroup optionGroup;
@@ -60,14 +66,13 @@ public class MainActivity extends SherlockActivity implements OnClickListener
 	TextView ea18View;
 	TextView ea12View;
 	RelativeLayout resultView;
-	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.style_test);
-		
+
 		instantiate();
 
 	}
@@ -78,6 +83,16 @@ public class MainActivity extends SherlockActivity implements OnClickListener
 
 		getSupportMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+		if (item.getItemId() == R.id.action_history)
+		{
+
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 	public void instantiate()
@@ -92,12 +107,12 @@ public class MainActivity extends SherlockActivity implements OnClickListener
 		submitButton = (Button) findViewById(R.id.submitButton);
 		saveButton = (Button) findViewById(R.id.saveButton);
 		closeButton = (ImageButton) findViewById(R.id.closeButton);
-		
+
 		incidentEnergyView = (TextView) findViewById(R.id.incidentEnergyView);
 		ea18View = (TextView) findViewById(R.id.ea18View);
-		ea12View= (TextView) findViewById(R.id.ea12View);
+		ea12View = (TextView) findViewById(R.id.ea12View);
 		resultView = (RelativeLayout) findViewById(R.id.resultView);
-		
+
 		submitButton.setOnClickListener(this);
 		saveButton.setOnClickListener(this);
 		closeButton.setOnClickListener(this);
@@ -146,15 +161,11 @@ public class MainActivity extends SherlockActivity implements OnClickListener
 			@Override
 			public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3)
 			{
-				// TODO Auto-generated method stub
-
 			}
 
 			@Override
 			public void afterTextChanged(Editable arg0)
 			{
-				// TODO Auto-generated method stub
-
 			}
 		});
 
@@ -172,42 +183,59 @@ public class MainActivity extends SherlockActivity implements OnClickListener
 				grounded = getGroudedValue();
 				Log.i(LOG_TAG, "v = " + V + ", option = " + option + ", t = " + faultClearanceTime + ", kVa = " + kVa + ", z = " + z + ", grounded = " + grounded);
 				Formulae formula = new Formulae(V, option, faultClearanceTime, kVa, z, grounded);
-				incidentEnergyView.setText(" incident Energy = " + formula.incidentEnergy() );
-				ea18View.setText(" ea18 = " +formula.eaAt18());
-				ea12View.setText(" ea12 = " +formula.eaAt12());
+				incidentEnergy = formula.incidentEnergy();
+				ea18 = formula.eaAt18();
+				ea12 = formula.eaAt12();
+				incidentEnergyView.setText(" incident Energy = " + incidentEnergy);
+				ea18View.setText(" ea18 = " + ea18);
+				ea12View.setText(" ea12 = " + ea12);
 				resultView.setVisibility(View.VISIBLE);
 			}
 		}
-		else if(view.getId() == R.id.saveButton)
+		else if (view.getId() == R.id.saveButton)
 		{
 			showSaveDialog();
 		}
-		else if(view.getId() == R.id.closeButton)
+		else if (view.getId() == R.id.closeButton)
 		{
 			resultView.setVisibility(View.GONE);
 		}
 
 	}
-	
+
 	private void showSaveDialog()
 	{
 		Intent intent = new Intent(this, saveDialogActivity.class);
 		startActivityForResult(intent, SAVE_DIALOG_REQUEST);
 	}
-	
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data)
 	{
-		if(requestCode == SAVE_DIALOG_REQUEST)
+		if (requestCode == SAVE_DIALOG_REQUEST)
 		{
-			if(resultCode == RESULT_OK)
+			if (resultCode == RESULT_OK)
 			{
 				String title = data.getStringExtra(getResources().getString(R.string.TAG_TITLE_STRING));
 				Toast.makeText(getApplicationContext(), title, Toast.LENGTH_SHORT).show();
+				saveValuestoDatabase(title);
 			}
 		}
 		super.onActivityResult(requestCode, resultCode, data);
+	}
+
+	private void saveValuestoDatabase(String title)
+	{
+		ArcflashDataSource dataSource = new ArcflashDataSource(getApplicationContext());
+		dataSource.open();
+		int grounding;
+		if (grounded)
+			grounding = 1;
+		else
+			grounding = 0;
+		dataSource.createResult(title, V, kVa, option, z, faultClearanceTime, grounding, incidentEnergy, ea18, ea12);
+		dataSource.close();
+
 	}
 
 	public boolean validate()
@@ -302,7 +330,7 @@ public class MainActivity extends SherlockActivity implements OnClickListener
 		}
 	}
 
-	private double getOptionValue()
+	private int getOptionValue()
 	{
 		int checkedId = optionGroup.getCheckedRadioButtonId();
 		switch (checkedId)

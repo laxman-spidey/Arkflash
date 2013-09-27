@@ -15,6 +15,7 @@ public class arcflashResult
 		this.id = id;
 	}
 
+	private String title;
 	private double lineVoltage;
 	private double transformerKva;
 	private int equipmentType;
@@ -24,6 +25,16 @@ public class arcflashResult
 	public double incidentEnergy;
 	public double ea18;
 	public double ea12;
+
+	public String getTitle()
+	{
+		return title;
+	}
+
+	public void setTitle(String title)
+	{
+		this.title = title;
+	}
 
 	public double getIncidentEnergy()
 	{

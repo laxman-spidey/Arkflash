@@ -14,7 +14,7 @@ public class ArcflashDataSource
 	private SQLiteDatabase database;
 	private ArcflashSQLiteHelper dbHelper;
 	private String[] allColumns =
-	{ ArcflashSQLiteHelper.LINE_VOLTAGE, ArcflashSQLiteHelper.TRANSFORMER_KVA, ArcflashSQLiteHelper.EQUIPMENT_TYPE, ArcflashSQLiteHelper.TRANSFORMER_Z, ArcflashSQLiteHelper.FAULT_TOLERANCE_TIME, ArcflashSQLiteHelper.GROUNDING };
+	{ ArcflashSQLiteHelper.RESULT_TITLE, ArcflashSQLiteHelper.LINE_VOLTAGE, ArcflashSQLiteHelper.TRANSFORMER_KVA, ArcflashSQLiteHelper.EQUIPMENT_TYPE, ArcflashSQLiteHelper.TRANSFORMER_Z, ArcflashSQLiteHelper.FAULT_TOLERANCE_TIME, ArcflashSQLiteHelper.GROUNDING, ArcflashSQLiteHelper.INCIDENT_ENERGY, ArcflashSQLiteHelper.EA18, ArcflashSQLiteHelper.EA12 };
 
 	public ArcflashDataSource(Context context)
 	{
@@ -33,12 +33,13 @@ public class ArcflashDataSource
 
 	public void createResult(arcflashResult result)
 	{
-		createResult(result.getLineVoltage(), result.getTransformerKva(), result.getEquipmentType(), result.getTransformerZ(), result.getFaultToleranceTime(), result.getGrounding(), result.getIncidentEnergy(), result.getEa18(), result.getEa12());
+		createResult(result.getTitle(), result.getLineVoltage(), result.getTransformerKva(), result.getEquipmentType(), result.getTransformerZ(), result.getFaultToleranceTime(), result.getGrounding(), result.getIncidentEnergy(), result.getEa18(), result.getEa12());
 	}
 
-	public arcflashResult createResult(double lineVoltage, double transformerKva, int equipmentType, double transformerZ, double faultToleranceTime, int grounding, double incidentEnergy, double ea18, double ea12)
+	public arcflashResult createResult(String title, double lineVoltage, double transformerKva, int equipmentType, double transformerZ, double faultToleranceTime, int grounding, double incidentEnergy, double ea18, double ea12)
 	{
 		ContentValues values = new ContentValues();
+		values.put(ArcflashSQLiteHelper.RESULT_TITLE, title);
 		values.put(ArcflashSQLiteHelper.LINE_VOLTAGE, lineVoltage);
 		values.put(ArcflashSQLiteHelper.TRANSFORMER_KVA, transformerKva);
 		values.put(ArcflashSQLiteHelper.EQUIPMENT_TYPE, equipmentType);
@@ -85,15 +86,17 @@ public class ArcflashDataSource
 	private arcflashResult cursorToObject(Cursor cursor)
 	{
 		arcflashResult result = new arcflashResult();
-		result.setId(cursor.getInt(0));
-		result.setLineVoltage(cursor.getDouble(1));
-		result.setTransformerKva(cursor.getDouble(2));
-		result.setEquipmentType(cursor.getInt(3));
-		result.setTransformerZ(cursor.getDouble(4));
-		result.setFaultToleranceTime(cursor.getDouble(5));
-		result.setGrounding(cursor.getInt(6));
-		result.setIncidentEnergy(cursor.getDouble(7));
-		result.setEa18(cursor.getDouble(8));
+		int i=0;
+		result.setId(cursor.getInt(i++));
+		result.setTitle(cursor.getString(i++));
+		result.setLineVoltage(cursor.getDouble(i++));
+		result.setTransformerKva(cursor.getDouble(i++));
+		result.setEquipmentType(cursor.getInt(i++));
+		result.setTransformerZ(cursor.getDouble(i++));
+		result.setFaultToleranceTime(cursor.getDouble(i++));
+		result.setGrounding(cursor.getInt(i++));
+		result.setIncidentEnergy(cursor.getDouble(i++));
+		result.setEa18(cursor.getDouble(i++));
 		result.setEa12(cursor.getDouble(9));
 		return result;
 	}

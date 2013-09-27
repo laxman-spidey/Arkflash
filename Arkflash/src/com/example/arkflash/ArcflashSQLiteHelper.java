@@ -8,8 +8,9 @@ import android.util.Log;
 public class ArcflashSQLiteHelper extends SQLiteOpenHelper
 {
 
-	public static final String TABLE_RESULT = "comments";
+	public static final String TABLE_RESULT = "results";
 	public static final String RESULT_ID = "result_id";
+	public static final String RESULT_TITLE = "result_title";
 	public static final String LINE_VOLTAGE = "line_voltage";
 	public static final String TRANSFORMER_KVA = "transformer_kva";
 	public static final String EQUIPMENT_TYPE = "equipment_type";
@@ -21,9 +22,9 @@ public class ArcflashSQLiteHelper extends SQLiteOpenHelper
 	public static final String EA12 = "ea12";
 
 	private static final String DATABASE_NAME = "arkflash.db";
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
 
-	private static final String CREATE_DATABASE = "create table " + TABLE_RESULT + "(" + RESULT_ID + " integer primary key autoincrement, " + LINE_VOLTAGE + " REAL not null, " + TRANSFORMER_KVA + " REAL not null, " + EQUIPMENT_TYPE + " NUM not null, " + TRANSFORMER_Z + " REAL not null, " + FAULT_TOLERANCE_TIME + " REAL not null, " + GROUNDING + " NUM not null);";
+	private static final String CREATE_DATABASE = "create table " + TABLE_RESULT + "(" + RESULT_ID + " integer primary key autoincrement, " + RESULT_TITLE + " TEXT not null, " + LINE_VOLTAGE + " REAL not null, " + TRANSFORMER_KVA + " REAL not null, " + EQUIPMENT_TYPE + " NUM not null, " + TRANSFORMER_Z + " REAL not null, " + FAULT_TOLERANCE_TIME + " REAL not null, " + GROUNDING + " NUM not null, " + INCIDENT_ENERGY + " REAL not null, " + EA18 + " REAL not null, " + EA12 + " REAL not null);";
 
 	public ArcflashSQLiteHelper(Context context)
 	{

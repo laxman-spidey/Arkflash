@@ -3,6 +3,7 @@
 
     <string name="app_name">Arkflash</string>
     <string name="action_settings">Settings</string>
+    <string name="action_history">History</string>
     <string name="hello_world">Hello world!</string>
     <string name="open_air">Open Air</string>
     <string name="switch_gears">Switch Gears</string>
