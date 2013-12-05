@@ -31,7 +31,7 @@ public class WelcomeActivity extends Activity
 				try
 				{
 					int waited = 0;
-					while (waited < 2000)
+					while (waited < 3000)
 					{
 						sleep(100);
 						waited += 100;

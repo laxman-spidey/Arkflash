@@ -11,8 +11,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_margin="20px"
-        android:paddingTop="5dp"
+        android:layout_margin="30dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:scaleType="fitCenter"
         android:src="@drawable/enguinity_logo" />
 
@@ -21,8 +22,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/enguinity"
-        android:layout_centerHorizontal="true"
+        android:layout_alignRight="@+id/enguinity"
         android:layout_marginBottom="10dp"
+        android:textSize="12sp"
         android:text="powered by Antzview"
         android:textColor="@android:color/black" />
 
