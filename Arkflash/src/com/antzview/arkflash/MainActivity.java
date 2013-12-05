@@ -252,7 +252,7 @@ public class MainActivity extends SherlockActivity implements OnClickListener
 			else
 			{
 				validity = false;
-				setError(lineVoltageV_view, "value must be >=0.208 and <=15");
+				setError(lineVoltageV_view, "value must be between 0.208 and 15");
 			}
 		}
 		else
@@ -312,6 +312,7 @@ public class MainActivity extends SherlockActivity implements OnClickListener
 	public void setError(EditText field, String errorMsg)
 	{
 		field.setError(errorMsg);
+		field.requestFocus();
 
 	}
 
