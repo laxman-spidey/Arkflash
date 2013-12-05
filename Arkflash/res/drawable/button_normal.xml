@@ -5,11 +5,13 @@
         <shape>
             <solid android:color="@android:color/black" />
 
-            <padding android:bottom="2dp" />
+            <padding
+                android:bottom="2dp"
+                android:left="2dp"
+                android:right="2dp"
+                android:top="2dp" />
 
-            <corners
-                android:topLeftRadius="8dp"
-                android:topRightRadius="8dp" />
+            <corners android:radius="8dp" />
         </shape>
     </item>
     <item>
@@ -21,9 +23,7 @@
 
             <padding android:bottom="3dp" />
 
-            <corners
-                android:topLeftRadius="8dp"
-                android:topRightRadius="8dp" />
+            <corners android:radius="8dp" />
         </shape>
     </item>
 

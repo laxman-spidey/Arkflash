@@ -2,134 +2,28 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/resultView"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    android:background="@drawable/table_card"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray"
     android:orientation="vertical"
+    android:padding="5dp"
     android:visibility="visible" >
 
     <TextView
-        android:id="@+id/resultTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/table_heading"
-        android:gravity="center"
-        android:text="Result"
-        android:textColor="#FFFFFF"
-        android:textSize="@dimen/field_label"
-        android:textStyle="bold" />
-
-    <ImageButton
-        android:id="@+id/closeButton"
+        android:id="@+id/history_infoMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_close" />
-
-    <TextView
-        android:id="@+id/history_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/resultTitle"
-        android:background="@drawable/row_light"
-        android:text="Input"
-        android:gravity="center"
+        android:layout_centerInParent="true"
         android:textColor="@android:color/black"
-        android:textStyle="bold" />
+        android:visibility="gone" />
 
-    <TextView
-        android:id="@+id/history_lineVoltage"
+    <ListView
+        android:id="@+id/history_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/history_input"
-        android:background="@drawable/row_light"
-        android:text="TextView"
-        android:textColor="@android:color/black" />
-
-    <TextView
-        android:id="@+id/history_transformerKva"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/history_lineVoltage"
-        android:background="@drawable/row_dark"
-        android:text="TextView"
-        android:textColor="@android:color/black" />
-
-    <TextView
-        android:id="@+id/history_equipmentType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/history_transformerKva"
-        android:background="@drawable/row_light"
-        android:text="TextView"
-        android:textColor="@android:color/black" />
-
-    <TextView
-        android:id="@+id/history_transformerZ"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/history_equipmentType"
-        android:background="@drawable/row_dark"
-        android:text="TextView"
-        android:textColor="@android:color/black" />
-
-    <TextView
-        android:id="@+id/history_faultToleranceTime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/history_transformerZ"
-        android:background="@drawable/row_light"
-        android:text="TextView"
-        android:textColor="@android:color/black" />
-
-    <TextView
-        android:id="@+id/history_grounding"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/history_faultToleranceTime"
-        android:background="@drawable/row_dark"
-        android:text="TextView"
-        android:textColor="@android:color/black" />
-
-    <TextView
-        android:id="@+id/history_output"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/history_grounding"
-        android:background="@drawable/row_light"
-        android:text="Output"
-        android:gravity="center"
-        android:textColor="@android:color/black"
-        android:textStyle="bold" />
-    <TextView
-        android:id="@+id/history_incidentEnergy"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/history_output"
-        android:background="@drawable/row_light"
-        android:text="TextView"
-        android:textColor="@android:color/black" />
-
-    <TextView
-        android:id="@+id/history_ea18View"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/history_incidentEnergy"
-        android:background="@drawable/row_dark"
-        android:text="TextView"
-        android:textColor="@android:color/black" />
-
-    <TextView
-        android:id="@+id/history_ea12View"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/history_ea18View"
-        android:background="@drawable/row_light"
-        android:text="TextView"
-        android:textColor="@android:color/black" />
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:divider="@android:color/white"
+        android:dividerHeight="5dp" >
+    </ListView>
 
 </RelativeLayout>

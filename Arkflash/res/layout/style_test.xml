@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="5dp"
+    android:layout_height="match_parent"
     android:background="@color/white"
     android:dividerPadding="2dp"
     android:orientation="vertical"
+    android:padding="5dp"
     android:showDividers="beginning|middle|end" >
 
     <LinearLayout
@@ -25,7 +25,7 @@
             android:background="@drawable/table_heading"
             android:gravity="center_horizontal"
             android:text="Input"
-            android:textColor="#FFFFFF"
+            android:textColor="@android:color/white"
             android:textSize="@dimen/field_label"
             android:textStyle="bold" />
 
@@ -123,9 +123,8 @@
                             android:ems="10"
                             android:gravity="right"
                             android:hint="Ex: 750"
-                            android:inputType="numberDecimal" >
-
-                            <requestFocus />
+                            android:inputType="numberDecimal"
+                            android:textColor="@android:color/black" >
                         </EditText>
 
                         <TextView
@@ -228,9 +227,8 @@
                             android:ems="10"
                             android:gravity="right"
                             android:hint="Ex: 5.52"
-                            android:inputType="numberDecimal" >
-
-                            <requestFocus />
+                            android:inputType="numberDecimal"
+                            android:textColor="@android:color/black" >
                         </EditText>
 
                         <TextView
@@ -278,9 +276,8 @@
                             android:ems="10"
                             android:gravity="right"
                             android:hint="Ex: 0.167"
-                            android:inputType="numberDecimal" >
-
-                            <requestFocus />
+                            android:inputType="numberDecimal"
+                            android:textColor="@android:color/black" >
                         </EditText>
 
                         <TextView
@@ -317,7 +314,7 @@
                         android:id="@+id/groundedGroup"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/row_dark"
+                        android:background="@drawable/row_dark_last"
                         android:orientation="horizontal" >
 
                         <RadioButton
@@ -346,13 +343,11 @@
         android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:background="@drawable/button_normal"
+        android:layout_gravity="center"
         android:layout_marginTop="5dp"
-        android:background="@drawable/table_heading"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:text="Submit"
-        android:textColor="@color/white" />
+        android:padding="10dp" 
+        android:text="Submit" />
 
     <RelativeLayout
         android:id="@+id/resultView"
@@ -362,7 +357,7 @@
         android:background="@drawable/table_card"
         android:orientation="vertical"
         android:padding="1dp"
-        android:visibility="visible" >
+        android:visibility="gone" >
 
         <TextView
             android:id="@+id/resultHeading"
@@ -379,12 +374,12 @@
 
         <ImageButton
             android:id="@+id/closeButton"
-            android:layout_width="wrap_content" 
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_close"
-            android:background="@android:color/transparent"
             android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"/>
+            android:layout_alignParentTop="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_close" />
 
         <TextView
             android:id="@+id/incidentEnergyView"
@@ -419,9 +414,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/ea12View"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/table_heading"
+            android:background="@drawable/button_normal"
+            android:layout_margin="3dp"
+            android:padding="10dp"
             android:text="Save" />
-
     </RelativeLayout>
 
 </LinearLayout>

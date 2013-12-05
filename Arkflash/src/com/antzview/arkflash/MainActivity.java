@@ -1,11 +1,7 @@
-package com.example.arkflash;
+package com.antzview.arkflash;
 
-import com.actionbarsherlock.app.SherlockActivity;
-
-import android.R.menu;
-import android.os.Bundle;
 import android.content.Intent;
-import android.graphics.Color;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -14,17 +10,16 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import android.widget.TextView;
-
+import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
-import com.example.arkslash.R;
+import com.antzview.arkslash.R;
 
 public class MainActivity extends SherlockActivity implements OnClickListener
 {
@@ -90,7 +85,9 @@ public class MainActivity extends SherlockActivity implements OnClickListener
 	{
 		if (item.getItemId() == R.id.action_history)
 		{
-
+			Intent intent = new Intent(this, com.antzview.arkflash.HistoryActivity.class);
+			startActivity(intent);
+			
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -116,9 +113,10 @@ public class MainActivity extends SherlockActivity implements OnClickListener
 		submitButton.setOnClickListener(this);
 		saveButton.setOnClickListener(this);
 		closeButton.setOnClickListener(this);
+		
 		// /test
-		lineVoltageV_view.setText("7");
-		transformerKVA_view.setText("700");
+		//lineVoltageV_view.setText("7");
+		//transformerKVA_view.setText("700");
 
 		// /test
 

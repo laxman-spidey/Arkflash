@@ -1,4 +1,4 @@
-package com.example.arkflash;
+package com.antzview.arkflash;
 
 import java.util.ArrayList;
 import java.util.List;

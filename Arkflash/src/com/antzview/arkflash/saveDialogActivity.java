@@ -1,17 +1,15 @@
-package com.example.arkflash;
-
-import com.example.arkslash.R;
+package com.antzview.arkflash;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+
+import com.antzview.arkslash.R;
 
 public class saveDialogActivity extends Activity implements OnClickListener
 {
@@ -32,6 +30,7 @@ public class saveDialogActivity extends Activity implements OnClickListener
 		cancelButton.setOnClickListener(this);
 
 		title = (EditText) findViewById(R.id.titleEditText);
+
 	}
 
 	@Override
@@ -47,8 +46,7 @@ public class saveDialogActivity extends Activity implements OnClickListener
 				setResult(RESULT_OK, intent);
 				finish();
 			}
-		}
-		else if (v.getId() == R.id.dialogCancelButton)
+		} else if (v.getId() == R.id.dialogCancelButton)
 		{
 			setResult(RESULT_CANCELED);
 			finish();

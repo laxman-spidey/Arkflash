@@ -1,29 +1,50 @@
-package com.example.arkflash;
+package com.antzview.arkflash;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockActivity;
-import com.example.arkslash.R;
+import com.antzview.arkslash.R;
 
 public class HistoryActivity extends SherlockActivity
 {
 
 	ArcflashDataSource dataSource;
+	TextView msgView;
 
 	// UI elements
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
+		setTitle("History");
 		setContentView(R.layout.history_activity);
+		msgView = (TextView) findViewById(R.id.history_infoMsg);
+
 		dataSource = new ArcflashDataSource(this);
 		dataSource.open();
-		instantiate();
+		// instantiate();
+		makeList();
+		// dataSource.close();
 		super.onCreate(savedInstanceState);
+	}
+
+	private void makeList()
+	{
+		List<arcflashResult> resultList = dataSource.getAllResults();
+		ListView historyListView = (ListView) findViewById(R.id.history_list);
+		HistoryListAdapter adapter = new HistoryListAdapter(getApplicationContext(), resultList, dataSource, msgView);
+		historyListView.setAdapter(adapter);
+		if (resultList.size() <= 0)
+		{
+			msgView.setText("No data Saved.");
+			msgView.setVisibility(View.VISIBLE);
+		}
+
 	}
 
 	private void instantiate()
@@ -44,14 +65,21 @@ public class HistoryActivity extends SherlockActivity
 		resultTitle.setText(resultItem.getTitle());
 		lineVoltage.setText("lineVoltage : " + resultItem.getLineVoltage());
 		transformerKva.setText("transformer (KVA) : " + resultItem.getTransformerKva());
-		eqipmentType.setText("Equipment Type : " + resultItem.getEquipmentType());
+		eqipmentType.setText("Equipment Type : " + resultItem.getEquipmentTypeString());
 		transformerZ.setText("Transformer (Z) : " + resultItem.getTransformerZ());
 		faultToleranceTime.setText("Fault Tolerance Time (t) : " + resultItem.getFaultToleranceTime());
-		grounding.setText("grounding : " + resultItem.getGrounding());
+		grounding.setText("Grounding : " + resultItem.getGroundingString());
 		incidentEnergy.setText("incident Energy : " + resultItem.getIncidentEnergy());
 		ea18.setText("ea18 : " + resultItem.getEa18());
 		ea12.setText("ea12 : " + resultItem.getEa12());
 
+	}
+
+	@Override
+	public void onDestroy()
+	{
+		dataSource.close();
+		super.onDestroy();
 	}
 
 }

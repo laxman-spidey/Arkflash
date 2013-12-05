@@ -1,8 +1,5 @@
-package com.example.arkflash;
+package com.antzview.arkflash;
 
-import com.example.arkslash.R;
-
-import android.content.res.Resources;
 
 public class arcflashResult
 {
@@ -100,16 +97,20 @@ public class arcflashResult
 		switch (equipmentType)
 		{
 		case 1:
-			return Resources.getSystem().getString(R.string.open_air);
+			//return Resources.getSystem().getString(R.string.open_air);
+			return "Open Air";
 
 		case 2:
-			return Resources.getSystem().getString(R.string.switch_gears);
+			//return Resources.getSystem().getString(R.string.switch_gears);
+			return "Switch Gears";
 
 		case 3:
-			return Resources.getSystem().getString(R.string.mcs_panels);
+			//return Resources.getSystem().getString(R.string.mcs_panels);
+			return "MC/Panels";
 
 		case 4:
-			return Resources.getSystem().getString(R.string.cables);
+			//return Resources.getSystem().getString(R.string.cables);
+			return "Cables";
 
 		default:
 			return null;
@@ -152,9 +153,11 @@ public class arcflashResult
 		switch (grounding)
 		{
 		case 0:
-			return Resources.getSystem().getString(R.string.grounded);
+			//return Resources.getSystem().getString(R.string.grounded);
+			return "Grounded";
 		case 1:
-			return Resources.getSystem().getString(R.string.not_grounded);
+			//return Resources.getSystem().getString(R.string.not_grounded);
+			return "Not Grounded";
 
 		default:
 			return null;

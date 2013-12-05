@@ -1,4 +1,4 @@
-package com.example.arkflash;
+package com.antzview.arkflash;
 
 import android.util.Log;
 

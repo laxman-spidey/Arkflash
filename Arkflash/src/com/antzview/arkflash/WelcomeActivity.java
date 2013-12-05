@@ -1,12 +1,12 @@
-package com.example.arkflash;
-
-import com.example.arkslash.R;
+package com.antzview.arkflash;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
+
+import com.antzview.arkslash.R;
 
 public class WelcomeActivity extends Activity
 {
@@ -64,7 +64,7 @@ public class WelcomeActivity extends Activity
 		Log.i("tag", "in Show menu activity");
 		Intent intent = new Intent();
 		intent.putExtra("sessionId", sessionId);
-		intent.setClass(this, com.example.arkflash.MainActivity.class);
+		intent.setClass(this, com.antzview.arkflash.MainActivity.class);
 		startActivity(intent);
 	}
 }
